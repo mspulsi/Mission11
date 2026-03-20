@@ -1,5 +1,6 @@
 using AmazonProject.API.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AmazonProject.API.Controllers;
 
@@ -15,10 +16,17 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetBooks(int count = 10, int page = 1)
+    public IActionResult GetBooks(int count = 10, int page = 1, string sortBy = "")
 
     {
-        var dbBooks = _context.Books
+        var query = _context.Books.AsQueryable();
+
+        if (sortBy == "asc")
+            query = query.OrderBy(x => x.Title);
+        else if (sortBy == "desc")
+            query = query.OrderByDescending(x => x.Title);
+
+        var dbBooks = query
             .Skip((page - 1) * count)
             .Take(count)
             .ToList();
