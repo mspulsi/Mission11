@@ -6,10 +6,11 @@ export default function BookList() {
     const [page, setPage] = useState(1);
     const [count, setCount] = useState(5);
     const [totalPages, setTotalPages] = useState(1);
+    const [sortBy, setSortBy] = useState("none");
 
     const fetchBooks = async () => {
         try {
-            const response = await fetch(`https://localhost:5000/Books?count=${count}&page=${page}`);
+            const response = await fetch(`https://localhost:5000/Books?count=${count}&page=${page}&sortBy=${sortBy}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -23,7 +24,7 @@ export default function BookList() {
 
     useEffect(() => {
         fetchBooks();
-    }, [page, count]);
+    }, [page, count, sortBy]);
 
     return (
         <div className="container mt-4">
@@ -35,6 +36,12 @@ export default function BookList() {
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
+                </select>
+                <select name="sortBy" id="sortBy" value={sortBy} onChange={(e) => 
+                    setSortBy(e.target.value)}>
+                    <option value="none">None</option>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
                 </select>
             </div>
             <div className="container mt-4">
