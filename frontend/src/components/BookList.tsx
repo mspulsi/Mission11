@@ -7,10 +7,11 @@ export default function BookList() {
     const [count, setCount] = useState(5);
     const [totalPages, setTotalPages] = useState(1);
     const [sortBy, setSortBy] = useState("none");
-
+    const [category, setCategory] = useState("all");
+    
     const fetchBooks = async () => {
         try {
-            const response = await fetch(`https://localhost:5000/Books?count=${count}&page=${page}&sortBy=${sortBy}`);
+            const response = await fetch(`https://localhost:5000/Books?count=${count}&page=${page}&sortBy=${sortBy}&category=${category}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -24,7 +25,7 @@ export default function BookList() {
 
     useEffect(() => {
         fetchBooks();
-    }, [page, count, sortBy]);
+    }, [page, count, sortBy, category]);
 
     return (
         <div className="container mt-4">
@@ -42,6 +43,19 @@ export default function BookList() {
                     <option value="none">None</option>
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
+                </select>
+                <select name="category" id="category" value={category} onChange={(e) => 
+                    setCategory(e.target.value)}>
+                    <option value="all">All</option>
+                    <option value="Biography">Biography</option>
+                    <option value="Classic">Classic</option>
+                    <option value="Self-Help">Self-Help</option>
+                    <option value="Historical">Historical</option>
+                    <option value="Business">Business</option>
+                    <option value="Christian Books">Christian Books</option>
+                    <option value="Thrillers">Thrillers</option>
+                    <option value="Health">Health</option>
+                    <option value="Action">Action</option>
                 </select>
             </div>
             <div className="container mt-4">

@@ -16,7 +16,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetBooks(int count = 10, int page = 1, string sortBy = "")
+    public IActionResult GetBooks(int count = 10, int page = 1, string sortBy = "", string category = "")
 
     {
         var query = _context.Books.AsQueryable();
@@ -26,6 +26,9 @@ public class BooksController : ControllerBase
         else if (sortBy == "desc")
             query = query.OrderByDescending(x => x.Title);
 
+        if (category != "all") {
+            query = query.Where(x => x.Category == category);
+        }
         var dbBooks = query
             .Skip((page - 1) * count)
             .Take(count)
