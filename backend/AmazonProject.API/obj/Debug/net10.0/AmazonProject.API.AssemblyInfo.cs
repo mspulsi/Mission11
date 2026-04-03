@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AmazonProject.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bf80377990359c001673b5b168a161ad21c59ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+140750b8cca41315d5bd917d8728aa2f7468bdc9")]
 [assembly: System.Reflection.AssemblyProductAttribute("AmazonProject.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AmazonProject.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

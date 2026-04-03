@@ -14,16 +14,21 @@ export default function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                        {location.pathname === '/cart' && (
+                        {location.pathname !== '/' && (
                             <li className="nav-item">
                                 <Link className="nav-link" to="/">Books</Link>
                             </li>
                         )}
-                        {location.pathname === '/' && (
+                        {location.pathname !== '/cart' && (
                             <li className="nav-item">
                                 <Link className="nav-link" to="/cart">
                                     Cart ({totalItems ?? 0} - ${(totalPrice ?? 0).toFixed(2)})
                                 </Link>
+                            </li>
+                        )}
+                        {!location.pathname.startsWith('/admin') && (
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/admin">Admin</Link>
                             </li>
                         )}
                     </ul>
