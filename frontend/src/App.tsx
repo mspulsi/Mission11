@@ -1,14 +1,22 @@
 import './App.css'
-import BookList from './components/BookList'
-import Header from './components/Header'
+import Navbar from './components/Navbar'
+import { CartProvider } from './CartContext'
+import { Route, Routes } from 'react-router-dom'
+import Books from './pages/Books'
+import Cart from './pages/Cart'
 
 function App() {
   return (
     <>
-      <Header />
-      <main>
-        <BookList />
-      </main>
+      <CartProvider>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Books />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </main>
+      </CartProvider>
     </>
   )
 }
