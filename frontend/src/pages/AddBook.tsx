@@ -29,7 +29,7 @@ export default function AddBook() {
         setError('');
 
         try {
-            const response = await fetch('${API_URL}/Books', {
+            const response = await fetch(`${API_URL}/Books`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
