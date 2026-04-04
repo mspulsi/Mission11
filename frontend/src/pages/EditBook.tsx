@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { book } from "../types/Book";
+import { API_URL } from "../config";
 
 export default function EditBook() {
     const { id } = useParams<{ id: string }>();
@@ -12,7 +13,7 @@ export default function EditBook() {
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const response = await fetch(`https://localhost:5000/Books/${id}`);
+                const response = await fetch(`${API_URL}/Books/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setFormData(data);
@@ -43,7 +44,7 @@ export default function EditBook() {
         setError('');
 
         try {
-            const response = await fetch(`https://localhost:5000/Books/${id}`, {
+            const response = await fetch(`${API_URL}/Books/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

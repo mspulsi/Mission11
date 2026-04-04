@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/3a89d36f-7c85-4fd6-86bd-12484061248d/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/AmazonProject-Backend",
+    "appService.deploySubpath": "backend/AmazonProject.API/publish"
+}

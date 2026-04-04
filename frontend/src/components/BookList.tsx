@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { book } from "../types/Book";
 import { useCart } from "../CartContext";
+import { API_URL } from "../config";
 
 export default function BookList() {
     const [books, setBooks] = useState<book[]>([]);
@@ -13,7 +14,7 @@ export default function BookList() {
 
     const fetchBooks = async () => {
         try {
-            const response = await fetch(`https://localhost:5000/Books?count=${count}&page=${page}&sortBy=${sortBy}&category=${category}`);
+            const response = await fetch(`${API_URL}/Books?count=${count}&page=${page}&sortBy=${sortBy}&category=${category}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

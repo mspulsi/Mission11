@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { book } from "../types/Book";
+import { API_URL } from "../config";
 
 export default function AdminBooks() {
     const [books, setBooks] = useState<book[]>([]);
@@ -11,7 +12,7 @@ export default function AdminBooks() {
 
     const fetchBooks = async () => {
         try {
-            const response = await fetch(`https://localhost:5000/Books?count=${count}&page=${page}`);
+            const response = await fetch(`${API_URL}/Books?count=${count}&page=${page}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -27,7 +28,7 @@ export default function AdminBooks() {
         if (!confirm('Are you sure you want to delete this book?')) return;
         
         try {
-            const response = await fetch(`https://localhost:5000/Books/${bookId}`, {
+            const response = await fetch(`${API_URL}/Books/${bookId}`, {
                 method: 'DELETE',
             });
             if (response.ok) {

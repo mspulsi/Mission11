@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 export default function AddBook() {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function AddBook() {
         setError('');
 
         try {
-            const response = await fetch('https://localhost:5000/Books', {
+            const response = await fetch('${API_URL}/Books', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

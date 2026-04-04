@@ -148,3 +148,4 @@
 /Users/mspul/Desktop/Mission_11/backend/AmazonProject.API/obj/Debug/net10.0/AmazonProject.API.genruntimeconfig.cache
 /Users/mspul/Desktop/Mission_11/backend/AmazonProject.API/obj/Debug/net10.0/ref/AmazonProject.API.dll
 /Users/mspul/Desktop/Mission_11/backend/AmazonProject.API/obj/Debug/net10.0/AmazonProject.API.sourcelink.json
+/Users/mspul/Desktop/Mission_11/backend/AmazonProject.API/bin/Debug/net10.0/Bookstore.sqlite
